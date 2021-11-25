@@ -1,23 +1,28 @@
 class Curso
 types
-	public string = seq of char;
+	public String = seq of char;
 	public Cid = token;
 	public Eid = token
 	
 instance variables
 	public id_curso: Cid;
-	public nombre: string := [];
-	private Estudiantes: map Eid to Estudiante;
+	public nombre: String := [];
+	private Estudiantes: map Eid to Estudiante := {|->};
 
 operations
-public MostrarEstudiantes:()==> set of Eid
-MostrarEstudiantes() == (return (dom Estudiantes););
 
-public IngresarEstudiante: Estudiante ==> ()
-IngresarEstudiante(estudiante)==
-	Estudiantes := Estudiantes munion {estudiante.GetTarjetaId() |-> estudiante};
+	public Curso: Cid * String ==> Curso
+	Curso(cid, nnombre) ==  (id_curso := cid; 
+													nombre := nnombre;);
 
-pure public GetCursoId : () ==> Cid
-GetCursoId() == return id_curso;
+	public MostrarEstudiantes:() ==> set of Eid
+	MostrarEstudiantes() == (return (dom Estudiantes););
+	
+	public IngresarEstudiante: Estudiante ==> ()
+	IngresarEstudiante(estudiante)==
+		Estudiantes := Estudiantes munion {estudiante.GetTarjetaId() |-> estudiante};
+	
+	pure public GetCursoId : () ==> Cid
+	GetCursoId() == return id_curso;
 
 end Curso
