@@ -2,24 +2,28 @@ class Estudiante
 
 values
 -- TODO Define values here
+types
+	public Eid = token;
+	public Tid = token;
+	public Cid = token;
 
 instance variables
-	public id_estudiante : token;
-	public id_tarjeta : token;
-	public Cursos : map token to Curso;
+	public id_estudiante : Eid;
+	public id_tarjeta : Tid;
+	public Cursos : map Cid to Curso;
 	
 operations
 	-- El estudiante no marca asistencia
 	-- Lo hace la clase Clase
 	
-	public Estudiante: token * token * set of Curso ==> Estudiante
+	public Estudiante: Eid * Tid * set of Curso ==> Estudiante
 	Estudiante(eId, tId, cursos) ==  (id_estudiante := eId; 
 									id_tarjeta := tId;
 									Cursos := {c.GetCursoId() |-> c | c in set cursos};) -- GetCursoId -> implementar en clase curso
 	
 	pre forall c1, c2 in set cursos & c1<>c2 => c1.GetCursoId() <> c2.GetCursoId();
 
-	public GetTarjetaId : () ==> token
+	public GetTarjetaId : () ==> Tid
 	GetTarjetaId() == return id_tarjeta;
 
 	public MostrarCursos:() ==> set of Curso

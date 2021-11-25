@@ -1,23 +1,22 @@
 class Clase
+
 types
-	public Cid = token;
-values
+	public Clid = token;
 
 instance variables
-	public id_clase : Cid;
-    public fecha: Fecha;
-    public HoraInicio: Hora;
-    public HoraFin: Hora;
-	public asistencias : map Asistencia`Aid to Asistencia;
+	public id_clase : Clid;
+	public fecha: Fecha;
+	public HoraInicio: Hora;
+  public HoraFin: Hora;
+  public Asistencias : map Asistencia`id_asistencia to Asistencia;
 
-	
 operations
-	public Clase: Cid * Fecha * HoraInicio * HoraFin * set of Asistencia ==> Clase
+	public Clase: Clid * Fecha * Hora * Hora * set of Asistencia ==> Clase
 	Clase(cId, fech, h_inicio, h_fin, asistencias) ==  (
         id_clase := cId; 
-		fecha := fech;
+				fecha := fech;
         HoraInicio := h_inicio;
         HoraFin := h_fin;
-		asistencias := {a.GetAsistenciaId() |-> a | a in set Asistencia};) 
+				Asistencias := {a.GetAsistenciaId() |-> a | a in set asistencias};) 
     
 end Clase

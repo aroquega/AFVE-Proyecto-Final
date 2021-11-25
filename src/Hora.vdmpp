@@ -1,24 +1,21 @@
 class Hora
 
 types
-
-Hor = nat1;
-Minuto = nat1;
-Segundo = nat1;
+	public Horas = nat1;
+	public Minutos = nat1;
+	public Segundos = nat1;
 
 instance variables
-
-hora : Hor :=1;
-minuto : Minuto := 1;
-segundo : Segundo := 1;
-inv hora <= 24 and minuto <= 60 and segundo <= 60;
+	public horas : Horas :=1;
+	public minutos : Minutos := 1;
+	public segundos : Segundos := 1;
+	inv horas <= 24 and minutos <= 60 and segundos <= 60;
 	
 operations 
  
- public Hora: nat1 * nat1 * nat1 ==> Hora
- Hora(h,mi,s) ==
- ( hora := h;
-   minuto := mi;
-	segundo := s);
+	public Hora: Horas * Minutos * Segundos ==> Hora
+	Hora(h, m, s) == (horas := h;
+										minutos := m;
+										segundos := s);
 
 end Hora
