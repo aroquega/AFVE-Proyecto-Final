@@ -1,7 +1,5 @@
 class Estudiante
 
-values
--- TODO Define values here
 types
 	public Eid = token;
 	public Tid = token;
@@ -13,13 +11,11 @@ instance variables
 	public Cursos : map Cid to Curso;
 	
 operations
-	-- El estudiante no marca asistencia
-	-- Lo hace la clase Clase
 	
 	public Estudiante: Eid * Tid * set of Curso ==> Estudiante
-	Estudiante(eId, tId, cursos) ==  (id_estudiante := eId; 
-									id_tarjeta := tId;
-									Cursos := {c.GetCursoId() |-> c | c in set cursos};) -- GetCursoId -> implementar en clase curso
+	Estudiante(eid, tid, cursos) ==  (id_estudiante := eid; 
+									id_tarjeta := tid;
+									Cursos := {c.GetCursoId() |-> c | c in set cursos};)
 	
 	pre forall c1, c2 in set cursos & c1<>c2 => c1.GetCursoId() <> c2.GetCursoId();
 
@@ -29,8 +25,4 @@ operations
 	public MostrarCursos:() ==> set of Curso
 	MostrarCursos() == return rng Cursos;
 
-functions
--- TODO Define functions here
-traces
--- TODO Define Combinatorial Test Traces here
 end Estudiante
