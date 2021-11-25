@@ -1,0 +1,28 @@
+class Fecha
+
+types
+
+Day = nat1;
+Month = nat1;
+Year = int;
+
+instance variables
+
+day : Day :=1;
+month : Month := 1;
+inv day <= 31 and month<= 12 and 
+	if month in set {4,9,6,11}
+	then day <= 30
+	else (month = 2) => (day <= 29);
+	
+year : Year;
+
+operations 
+ 
+ public Fecha: nat1 * nat1 * int ==> Fecha
+ Fecha(d,m,a) ==
+ ( day := d;
+   month := m;
+	year := a);
+
+end Fecha
