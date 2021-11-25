@@ -2,21 +2,35 @@ class Clase
 
 types
 	public Clid = token;
+	public Aid = token;
+	
+	public Estado = <Presente> | <Tarde> | <FaltaJustificada> | <Ausente>;
+	public Asistencia :: 
+		id_asistencia: Aid
+		-- clase: Clase -- esto no es necesario, si Asistencia esta dentro de cada clase (?
+		estudiante: Estudiante
+		estado: Estado
+		hora: Hora;
 
 instance variables
 	public id_clase : Clid;
 	public fecha: Fecha;
 	public HoraInicio: Hora;
   public HoraFin: Hora;
-  public Asistencias : map Asistencia`id_asistencia to Asistencia;
+  public Asistencias : map Aid to Asistencia := {|->};
 
 operations
-	public Clase: Clid * Fecha * Hora * Hora * set of Asistencia ==> Clase
-	Clase(cId, fech, h_inicio, h_fin, asistencias) ==  (
-        id_clase := cId; 
+
+	-- una clase se crea sin ninguna asistencia
+	public Clase: Clid * Fecha * Hora * Hora ==> Clase
+	Clase(clId, fech, h_inicio, h_fin) ==  (
+        id_clase := clId; 
 				fecha := fech;
         HoraInicio := h_inicio;
-        HoraFin := h_fin;
-				Asistencias := {a.GetAsistenciaId() |-> a | a in set asistencias};) 
+        HoraFin := h_fin;);
+        
+   -- marcar asistencia
+   public MarcarAsistencia : Aid * Estudiante * Estado * Hora  ==> ()
+   	MarcarAsistencia(aid, estudiante, estado, hora) == Asistencias := Asistencias munion {aid |-> mk_Asistencia(aid, estudiante, estado, hora)};
     
 end Clase
