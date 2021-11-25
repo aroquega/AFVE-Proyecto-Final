@@ -13,7 +13,6 @@ MostrarEstudiantes()==
 );
 public IngresarEstudiante: Estudiante ==> ()
 IngresarEstudiante(es)==
-	(estudiantes ++ {es.GetTarjeta() |-> es }
- );
+ estudiantes := estudiantes munion {es.GetTarjetaId() |-> es };
 
 end Curso
