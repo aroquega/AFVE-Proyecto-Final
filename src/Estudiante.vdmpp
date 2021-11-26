@@ -3,12 +3,12 @@ class Estudiante
 types
 	public Eid = token;
 	public Tid = token;
-	public Cid = token;
+	--public Cid = token;
 
 instance variables
 	public id_estudiante : Eid;
 	public id_tarjeta : Tid;
-	public Cursos : map Cid to Curso;
+	public Cursos : map Curso`Cid to Curso;
 	
 operations
 	
@@ -22,7 +22,7 @@ operations
 	public GetTarjetaId : () ==> Tid
 	GetTarjetaId() == return id_tarjeta;
 
-	public MostrarCursos:() ==> set of Curso
-	MostrarCursos() == return rng Cursos;
+	--public MostrarCursos:() ==> set of Curso
+	--MostrarCursos() == return rng Cursos;
 
 end Estudiante
