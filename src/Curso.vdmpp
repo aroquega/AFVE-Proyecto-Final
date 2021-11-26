@@ -2,12 +2,12 @@ class Curso
 types
 	public String = seq of char;
 	public Cid = token;
-	public Eid = token
+	--public Eid = token
 	
 instance variables
 	public id_curso: Cid;
 	public nombre: String := [];
-	private Estudiantes: map Eid to Estudiante := {|->};
+	private Estudiantes: map Estudiante`Eid to Estudiante := {|->};
 
 operations
 
@@ -15,7 +15,7 @@ operations
 	Curso(cid, nnombre) ==  (id_curso := cid; 
 													nombre := nnombre;);
 
-	public MostrarEstudiantes:() ==> set of Eid
+	public MostrarEstudiantes:() ==> set of Estudiante`Eid
 	MostrarEstudiantes() == (return (dom Estudiantes););
 	
 	public IngresarEstudiante: Estudiante ==> ()
