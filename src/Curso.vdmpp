@@ -2,7 +2,6 @@ class Curso
 types
 	public String = seq of char;
 	public Cid = token;
-	--public Eid = token
 	
 instance variables
 	public id_curso: Cid;

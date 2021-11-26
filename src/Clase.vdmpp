@@ -7,7 +7,6 @@ types
 	public Estado = <Presente> | <Tarde> | <FaltaJustificada> | <Ausente>;
 	public Asistencia :: 
 		id_asistencia: Aid
-		-- clase: Clase -- esto no es necesario, si Asistencia esta dentro de cada clase (?
 		estudiante: Estudiante
 		estado: Estado
 		hora: Hora;
@@ -21,7 +20,6 @@ instance variables
 
 operations
 
-	-- una clase se crea sin ninguna asistencia
 	public Clase: Clid * Fecha * Hora * Hora ==> Clase
 	Clase(clId, fech, h_inicio, h_fin) ==  (
         id_clase := clId; 
@@ -29,7 +27,6 @@ operations
         HoraInicio := h_inicio;
         HoraFin := h_fin;);
         
-   -- marcar asistencia
    public MarcarAsistencia : Aid * Estudiante * Estado * Hora  ==> ()
    	MarcarAsistencia(aid, estudiante, estado, hora) == Asistencias := Asistencias munion {aid |-> mk_Asistencia(aid, estudiante, estado, hora)};
     

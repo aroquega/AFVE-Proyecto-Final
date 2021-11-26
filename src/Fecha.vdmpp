@@ -1,10 +1,5 @@
 class Fecha
 
-types
---public dia = nat1;
---public mes = nat1;
---public axo = int;
-
 instance variables
 	public dia : nat1 :=1;
 	public mes : nat1 := 1;
